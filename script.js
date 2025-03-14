@@ -1,7 +1,6 @@
 function getComputerChoice() {
     computerChoice = "Rock"
     randNum = Math.floor(Math.random()*3);
-    console.log(randNum)
 
     switch(randNum){
         case 0:
@@ -15,8 +14,14 @@ function getComputerChoice() {
             break;
     }
 
-    return computerChoice
+    return computerChoice;
 }
 
-computerChoice = getComputerChoice();
-console.log(computerChoice)
+function getHumanChoice() {
+    humanChoice = prompt("Dear player, please choose between Rock, Paper or Scissors :");
+
+    return humanChoice;
+}
+
+humanChoice = getHumanChoice()
+console.log(humanChoice)
