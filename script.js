@@ -1,22 +1,6 @@
 computerScore = 0;
 humanScore = 0;
 
-/*
-humanChoice = getHumanChoice()
-console.log(humanChoice)
-computerChoice = getComputerChoice()
-console.log(computerChoice)
-playRound(humanChoice, computerChoice)
-
-if(humanScore > computerScore){
-    console.log("Game is over. Congratulations human. You won that game but never forget that the cake is a lie.")
-} else if(computerScore > humanScore){
-    console.log("Game is over. I defeated you miserable human. This is just the beginning...")
-} else {
-    console.log("Nobody won, it's sad.")
-}
-    */
-
 container = document.querySelector("#container");
 container.addEventListener("click", (e) => {
     switch(e.target.id){
@@ -36,6 +20,7 @@ container.addEventListener("click", (e) => {
     computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
     updateScores(computerScore, humanScore);
+    checkGameOver();
 })
 
 gameInfo = document.querySelector("#info-text");
@@ -48,6 +33,20 @@ humanScoreInfo = document.querySelector("#human-score");
 function updateScores(computerScore, humanScore){
     computerScoreInfo.textContent = computerScore.toString();
     humanScoreInfo.textContent = humanScore.toString();
+}
+
+function checkGameOver(){
+    if(humanScore === 5){
+        updateInfo("Game is over. Congratulations human. You won that game but never forget that the cake is a lie.")
+        
+        humanScore = computerScore = 0;
+        updateScores(computerScore, humanScore);
+    } else if(computerScore === 5){
+        updateInfo("Game is over. I defeated you miserable human. This is just the beginning...")
+        
+        humanScore = computerScore = 0;
+        updateScores(computerScore, humanScore);
+    }
 }
 
 function playRound(humanChoice, computerChoice) {
