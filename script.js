@@ -37,12 +37,17 @@ container.addEventListener("click", (e) => {
     playRound(humanChoice, computerChoice);
 })
 
+gameInfo = document.querySelector("#text");
+function displayInfo(info){
+    gameInfo.textContent = info;
+}
+
 function playRound(humanChoice, computerChoice) {
     humanChoiceLow = humanChoice.toLowerCase();
     computerChoiceLow = computerChoice.toLowerCase();
 
     if(humanChoiceLow === computerChoiceLow){
-        console.log("Nobody wins. Try again !");
+        displayInfo("It's a tie. Try again !");
         return;
     }
 
@@ -50,11 +55,11 @@ function playRound(humanChoice, computerChoice) {
         case "rock":
             switch(computerChoiceLow){
                 case "paper":
-                    console.log(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
                 case "scissors":
-                    console.log(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
             }
@@ -62,11 +67,11 @@ function playRound(humanChoice, computerChoice) {
         case "paper":
             switch(computerChoiceLow){
                 case "rock":
-                    console.log(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
                 case "scissors":
-                    console.log(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
             }
@@ -74,11 +79,11 @@ function playRound(humanChoice, computerChoice) {
         case "scissors":
             switch(computerChoiceLow){
                 case "rock":
-                    console.log(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
                 case "paper":
-                    console.log(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
             }
@@ -103,12 +108,6 @@ function getComputerChoice() {
     }
 
     return computerChoice;
-}
-
-function getHumanChoice() {
-    humanChoice = prompt("Dear player, please choose between Rock, Paper or Scissors :");
-
-    return humanChoice;
 }
 
 
