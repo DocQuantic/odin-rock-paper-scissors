@@ -8,7 +8,7 @@ body{
     align-items: center;
 }
 
-.container{
+#container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,17 +20,21 @@ button{
     padding: 10px 20px;
 }
 
-.info{
+#info{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
-#text{
-    font-size: 30px;
+#score{
+    text-align: center;
 }
 
-#title{
+div h1{
     font-weight: bold;
+}
+
+div p{
+    font-size: 30px;
 }

@@ -17,7 +17,7 @@ if(humanScore > computerScore){
 }
     */
 
-container = document.querySelector(".container");
+container = document.querySelector("#container");
 container.addEventListener("click", (e) => {
     switch(e.target.id){
         case "rock":
@@ -35,11 +35,19 @@ container.addEventListener("click", (e) => {
     
     computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
+    updateScores(computerScore, humanScore);
 })
 
-gameInfo = document.querySelector("#text");
-function displayInfo(info){
+gameInfo = document.querySelector("#info-text");
+function updateInfo(info){
     gameInfo.textContent = info;
+}
+
+computerScoreInfo = document.querySelector("#computer-score");
+humanScoreInfo = document.querySelector("#human-score");
+function updateScores(computerScore, humanScore){
+    computerScoreInfo.textContent = computerScore.toString();
+    humanScoreInfo.textContent = humanScore.toString();
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -47,7 +55,7 @@ function playRound(humanChoice, computerChoice) {
     computerChoiceLow = computerChoice.toLowerCase();
 
     if(humanChoiceLow === computerChoiceLow){
-        displayInfo("It's a tie. Try again !");
+        updateInfo("It's a tie. Try again !");
         return;
     }
 
@@ -55,11 +63,11 @@ function playRound(humanChoice, computerChoice) {
         case "rock":
             switch(computerChoiceLow){
                 case "paper":
-                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    updateInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
                 case "scissors":
-                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    updateInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
             }
@@ -67,11 +75,11 @@ function playRound(humanChoice, computerChoice) {
         case "paper":
             switch(computerChoiceLow){
                 case "rock":
-                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    updateInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
                 case "scissors":
-                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    updateInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
             }
@@ -79,11 +87,11 @@ function playRound(humanChoice, computerChoice) {
         case "scissors":
             switch(computerChoiceLow){
                 case "rock":
-                    displayInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
+                    updateInfo(`${computerChoice} beats ${humanChoice}. Player loses! The machine defeated you poor little human`)
                     computerScore++;
                     break;
                 case "paper":
-                    displayInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
+                    updateInfo(`${humanChoice} beats ${computerChoice}. Player wins! You were lucky this time`)
                     humanScore++;
                     break;
             }
